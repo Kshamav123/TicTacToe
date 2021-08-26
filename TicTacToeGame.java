@@ -38,6 +38,17 @@ public class TicTacToeGame {
 		}
 		sc.close();
 	}
+	//Method to display the board
+	public void showBoard()
+	{
+		System.out.println("\n------------- ");
+		for(int i = 1 ; i<10 ; i+=3)
+		{
+			System.out.println("| " + board[i] + " | " + board[i+1] + " | " + board[i+2] + " |");
+			System.out.println("------------- ");
+		}
+		
+	}
 }
 
 
