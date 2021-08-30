@@ -20,6 +20,7 @@ public class TicTacToeGame {
 	public int tossWinner = 0 ;
 	public int[] arrCorners = {1,3,7,9};
 	public int[] arrSides = { 2,4,6,8 };
+	
 	public void createBoard() {
 
 		for (int i = 1; i <board.length ; i++) {
@@ -316,6 +317,7 @@ public void computerMove()
 	{
 		board[9]=computerOption;
 	}
+	else {
 
 	//checking for corner values usecase10
 	
@@ -345,23 +347,100 @@ if(flag1==0 )
 				board[arrSides[i]]=computerOption;
 				break;
 				}
-		}//end of for
+		     }
+		  }
+	  }
 	}
-}//end of if of UC11
-}//end of main else
+}	
+
+/* This method defines the conditions for a win
+ * The first 'for loop' is defined to check if there is an winning situation and if there is, it returns a character X or O
+ * The second 'for loop' is to check for a tie,if the match ends in a tie, the method returns character 't' or 'n'.
+ */
+	public char getWinner() {
+		String line = null;
+		
+        for (int a = 1; a < 10; a++) 
+        {
+           
+            switch (a) {
+            case 1:
+                line = ""+board[1] + board[2] + board[3];
+                break;
+            case 2:
+                line = ""+board[4] + board[5] + board[6];
+                break;
+            case 3:
+                line = ""+board[7] + board[8] + board[9];
+                break;
+            case 4:
+                line = ""+board[1] + board[4] + board[7];
+                break;
+            case 5:
+                line = ""+board[2] + board[5] + board[8];
+                break;
+            case 6:
+                line = ""+board[3] + board[6] + board[9];
+                break;
+            case 7:
+                line = ""+board[1] + board[5] + board[9];
+                break;
+            case 8:
+                line = ""+board[3] + board[5] + board[7];
+                break;
+            }
+        //For X winner
+        if (line.equals("XXX")) {
+            return 'X';
+        }
+          
+        // For O winner
+        else if (line.equals("OOO")) {
+            return  'O';
+        }
+        }
+        int check1;	
+        for (check1 = 1; check1 < 10; check1++) 
+        {
+	            if (board[check1]==' ') {
+	               break;
+	            }
+        } 
+        if(check1==10)
+	            return 't';
+        	else
+        		return 'n';
+	}
+	
+	//This is a method created to Identify and display winner
+	public void identifyWinner()
+	    {
+	    	
+	    	
+	       char win=getWinner();
+	        if(win==userOption)
+	        {
+	        	System.out.println("\n Congratulations, You win!");
+	        	winnerStatus=1;
+	        }
+	        else if(win==computerOption)
+	        	{
+	        		System.out.println("\n Computer wins!");
+	        		winnerStatus=1;
+	        	}
+	        else if(win=='t')
+	        {
+	        	System.out.println("TIE.");
+	        	winnerStatus=1;
+	        }
+	    }
+	}
+
 
 
     
 
 
-void occupyCorner() {
-	
-	int[] arr = {1,3,7,9};
-	int corner = rand.nextInt(3);
-	indexNumber = arr[corner];	
-	
-    }
-}
 
 
 	
