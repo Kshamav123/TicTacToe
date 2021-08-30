@@ -62,7 +62,7 @@ public class TicTacToeGame {
 //Method to display the board
 	public void showBoard()
 	{
-		for(int i = 1 ; i<10 ; i+=3)
+		for(int i = 1 ; i<board.length ; i+=3)
 		{
 			System.out.println("| " + board[i] + " | " + board[i+1] + " | " + board[i+2] );
 			System.out.println("------------- ");
@@ -118,8 +118,7 @@ public class TicTacToeGame {
 				userMove();
 			}
 	 showBoard();
-	 if(count!=0 && board[indexNumber]==' ')
-		 computerMove();
+	 
 	}
 	
 	/* UseCase 6 - Asking if the User would like to do a toss to check who plays first.
@@ -135,7 +134,7 @@ public class TicTacToeGame {
 		if(userChoice==headOrTail)
 		{
 			System.out.println("Player's Turn.");
-			turnWinner = 1;
+			tossWinner = 1;
 
 		}
 		else
@@ -143,7 +142,6 @@ public class TicTacToeGame {
 			System.out.println("Computer's turn");
 			tossWinner = 0;
 			turnToPlay='C';
-			indexNumber = rand.nextInt(10);
 			flag = 1;
 			userMove();
 		}
@@ -331,7 +329,27 @@ public void computerMove()
 			break;
 			}
 	}
-} 
+ 
+//checking for center and remaining values usecase11
+if(flag1==0 )
+	{
+	if(board[5]==' ')
+		board[5]=computerOption;
+	else
+	{
+		
+		for(int i=0;i<4;i++)
+		{
+			if(board[arrSides[i]]==' ')
+				{
+				board[arrSides[i]]=computerOption;
+				break;
+				}
+		}//end of for
+	}
+}//end of if of UC11
+}//end of main else
+
 
     
 
@@ -344,6 +362,7 @@ void occupyCorner() {
 	
     }
 }
+
 
 	
 	
