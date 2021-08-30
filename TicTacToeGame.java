@@ -11,7 +11,7 @@ public class TicTacToeGame {
 
 	public void createBoard() {
 
-		for (int i = 0; i <9 ; i++) {
+		for (int i = 1; i <board.length ; i++) {
 			board[i] = ' ';
 		}
 
@@ -60,16 +60,30 @@ public class TicTacToeGame {
 	 * indexNumber is used for the user to enter his input number.
 	 * The 'if' condition checks for a valid index number.
 	 */
+	/*
+	 * UseCase 5 -  To check for the free space before making the desired move
+	 * The'if...else' checks if the particular index is available or not, if it is available,the user input goes there
+	 * If not, message is displayed and the user needs to repeat his turn again.
+	 */
 	public void userIndexValue()
 	{
 		int indexNumber;
 		System.out.println("Enter an index number where you want to place your input: ");
 		indexNumber = sc.nextInt(); 
-		if(indexNumber < 1 || indexNumber > 9)
+		if(indexNumber < 1 || indexNumber > 10)
 		{
 			System.out.println("Please enter a valid index number from 1-9. ");
 		}
-	
+		if(board[indexNumber] == ' ')
+		{
+			board[indexNumber] = userOption;				
+		}
+	else
+		{
+			System.out.println("Sorry, Enter a different index number, this index number is not available."); 
+			userIndexValue();
+		}
+ showBoard();
 
 	}
 	
