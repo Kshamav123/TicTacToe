@@ -13,7 +13,9 @@ public class TicTacToeGame {
 	public Random rand = new Random(); // to check if User play's first or Computer using coin tossing
 	public char turnToPlay; // to check who is playing - the user or the system
 	public int flag = 0; // is used to monitor if the game is starting first time or not
-	
+	public  int winnerStatus = 0 ;
+	public  int tie = 0 ;
+	public  int changeUserTurn = 0 ;
 
 	public void createBoard() {
 
@@ -112,7 +114,7 @@ public class TicTacToeGame {
 	/* UseCase 6 - Asking if the User would like to do a toss to check who plays first.
 	 * If the user chooses Heads i.e, 0, and the @param headOrTail gives the result as 1, user plays
 	 * Else,computer starts.
-	 * @param flag is set to 1 to indicate that the Computer is starting first
+	 * flag is set to 1 to indicate that the Computer is starting first
 	 */
 	public void tossMethod()
 	{
@@ -134,6 +136,44 @@ public class TicTacToeGame {
 			userMove();
 		}
 	}
+	
+	/* UseCase 7 - As player would expect the Tic Tac Toe App to determine after every move the winner or the tie or change the turn
+	 * This method prints the Game statistics like the Winner, Tie or not and it helps in Changing the turn 
+	 * Swapping is done in order to change the user turns.
+	 */
+	
+public void statistics()
+{
+	if(winnerStatus == 0)
+		System.out.println("Winner: NA");
+	else
+		System.out.println("Winner: ");
+	System.out.println("Tie Games: " + tie);
+	System.out.println("Do you want to change turns? (Y/N):  ");
+	char newUserOption = sc.next().charAt(0); 
+	if(newUserOption == 'y' || newUserOption == 'Y')
+	{
+		if(turnToPlay == 'P')
+		{
+			turnToPlay ='C';
+			//Swapping userOption and ComputerOption
+			int temp = userOption;
+			userOption = computerOption;
+			computerOption = userOption;
+			showBoard();
+		}
+		else
+		{
+			turnToPlay = 'P';
+			//Swapping userOption and ComputerOption
+			int temp = userOption;
+			userOption = computerOption;
+			computerOption = userOption;
+			showBoard();
+		}
+	}
+	
+}
 }
 	
 	
