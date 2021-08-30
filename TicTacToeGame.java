@@ -239,16 +239,83 @@ public void statistics()
 
 public void computerMove()
 {
-	count=1;
-	do {
-		occupyCorner();
-	} while (board[indexNumber]!=' ');
-
-	board[indexNumber] = computerOption;
-	showBoard();
-	userIndexValue();
-	userMove();
-}    
+	if((board[1]==' ')&&(board[2]==board[3] && board[2]==computerOption)||(board[4]==board[7] && board[4]==computerOption)||(board[5]==board[9] && board[5]==computerOption))
+	{
+		board[1] = computerOption;
+		
+	}
+	else if((board[2]==' ')&&(board[1]==board[3] && board[1]==computerOption)||(board[5]==board[8] && board[8]==computerOption))
+	{
+		board[2] = computerOption;
+	}
+	else if((board[3]==' ')&&(board[2]==board[1] && board[2]==computerOption)||(board[5]==board[7] && board[5]==computerOption)||(board[6]==board[9] && board[6]==computerOption))
+	{
+		board[3] = computerOption;		
+	}
+	else if((board[4]==' ')&&(board[1]==board[7] && board[1]==computerOption)||(board[5]==board[6] && board[5]==computerOption))
+	{
+		board[4] = computerOption;	
+	}
+	else if((board[5]==' ')&&(board[2]==board[8] && board[2]==computerOption)||(board[4]==board[6] && board[4]==computerOption)||(board[1]==board[9] && board[9]==computerOption)||(board[7]==board[3] && board[3]==computerOption))
+	{
+		board[5] = computerOption;	
+	}
+	else if((board[6]==' ')&&(board[9]==board[3] && board[3]==computerOption)||(board[4]==board[5] && board[4]==computerOption))
+	{
+		board[6] = computerOption;	
+	}
+	else if((board[7]==' ')&&(board[1]==board[4] && board[1]==computerOption)||(board[5]==board[3] && board[3]==computerOption)||(board[8]==board[9] && board[9]==computerOption))
+	{
+		board[7] = computerOption;	
+	}
+	else if((board[8]==' ')&&(board[2]==board[5] && board[2]==computerOption)||(board[9]==board[7] && board[7]==computerOption))
+	{
+		board[8] = computerOption;	
+	}
+	else if((board[9]==' ')&&(board[6]==board[3] && board[3]==computerOption)||(board[8]==board[7] && board[7]==computerOption)||(board[5]==board[1] && board[5]==computerOption))
+	{
+		board[9] = computerOption;	
+	}
+	else if((board[1]==' ')&&((board[2]==board[3]&&board[2]==userOption)||(board[4]==board[7]&&board[4]==userOption)||(board[5]==board[9]&&board[5]==userOption)))
+	{
+		board[1]=computerOption;
+	}
+	
+	//UC9 - To block user from winning
+	
+	else if((board[2]==' ')&&((board[1]==board[3]&&board[3]==userOption)||(board[5]==board[8]&&board[8]==userOption)))
+	{
+		board[2]=computerOption;
+	}				
+	else if((board[3]==' ')&&((board[1]==board[2]&&board[2]==userOption)||(board[6]==board[9]&&board[9]==userOption)||(board[5]==board[7]&&board[7]==userOption)))				
+	{
+		board[3]=computerOption;
+	}
+	else if((board[4]==' ')&&((board[1]==board[7]&&board[7]==userOption)||(board[5]==board[6]&&board[6]==userOption)))
+	{
+		board[4]=computerOption;
+	}
+	else if((board[5]==' ')&&((board[1]==board[9]&&board[1]==userOption)||(board[7]==board[3]&&board[7]==userOption)||(board[2]==board[8]&&board[8]==userOption)||(board[4]==board[6]&&board[6]==userOption)))	
+	{
+		board[5]=computerOption;
+	}
+	else if((board[6]==' ')&&((board[9]==board[3]&&board[3]==userOption)||(board[5]==board[4]&&board[4]==userOption)))	
+	{
+		board[6]=computerOption;
+	}
+	else if((board[7]==' ')&&((board[1]==board[4]&&board[4]==userOption)||(board[8]==board[9]&&board[9]==userOption)||(board[5]==board[3]&&board[3]==userOption)))
+	{
+		board[7]=computerOption;
+	}
+	else if((board[8]==' ')&&((board[9]==board[7]&&board[7]==userOption)||(board[2]==board[5]&&board[2]==userOption)))		
+	{
+		board[8]=computerOption;
+	}
+	else if((board[9]==' ')&&((board[1]==board[5]&&board[5]==userOption)||(board[6]==board[3]&&board[3]==userOption)||(board[8]==board[7]&&board[7]==userOption)))
+	{
+		board[9]=computerOption;
+	}			
+} 
     
 
 
