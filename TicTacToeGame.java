@@ -1,13 +1,19 @@
 package com.tictactoe;
 
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class TicTacToeGame {
 	private char[] board = new char[10];
 	private char userOption;
 	private char computerOption;
+	private int indexNumber;
 	Scanner sc = new Scanner(System.in);
+	public Random rand = new Random(); // to check if User play's first or Computer using coin tossing
+	public char turnToPlay; // to check who is playing - the user or the system
+	public int flag = 0; // is used to monitor if the game is starting first time or not
+	
 
 	public void createBoard() {
 
@@ -70,21 +76,66 @@ public class TicTacToeGame {
 		int indexNumber;
 		System.out.println("Enter an index number where you want to place your input: ");
 		indexNumber = sc.nextInt(); 
-		if(indexNumber < 1 || indexNumber > 10)
+		if(indexNumber < 1 || indexNumber > 9)
 		{
 			System.out.println("Please enter a valid index number from 1-9. ");
 		}
-		if(board[indexNumber] == ' ')
+	}
+	public void userMove()
+	{
+		if(board[indexNumber] == ' ' && flag == 1) // this is when the user and computer are playing for the first time
+			{
+				if(turnToPlay == 'P')
+				{
+					board[indexNumber] = userOption;
+					flag = 0;
+				}
+				else
+				{
+					board[indexNumber] = computerOption;
+					flag = 0;
+				}
+			}
+		else if(board[indexNumber] == ' ')
 		{
-			board[indexNumber] = userOption;				
+			board[indexNumber] = userOption;
 		}
-	else
-		{
-			System.out.println("Sorry, Enter a different index number, this index number is not available."); 
-			userIndexValue();
-		}
- showBoard();
-
+		else
+			{
+				System.out.println("Sorry, Enter a different index number, this index number is not available."); 
+				userIndexValue();
+				userMove();
+			}
+	 showBoard();
 	}
 	
+	/* UseCase 6 - Asking if the User would like to do a toss to check who plays first.
+	 * If the user chooses Heads i.e, 0, and the @param headOrTail gives the result as 1, user plays
+	 * Else,computer starts.
+	 * @param flag is set to 1 to indicate that the Computer is starting first
+	 */
+	public void tossMethod()
+	{
+		System.out.println("Choose Head(0) or Tail(1): ");
+		int userChoice=sc.nextInt();							
+		int headOrTail = rand.nextInt(2);						
+		if(userChoice==headOrTail)
+		{
+			System.out.println("Player's Turn.");
+			turnToPlay='P';
+
+		}
+		else
+		{
+			System.out.println("Computer's turn");
+			turnToPlay='C';
+			indexNumber = rand.nextInt(10);
+			flag = 1;
+			userMove();
+		}
+	}
 }
+	
+	
+
+	
