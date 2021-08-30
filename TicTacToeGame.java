@@ -17,7 +17,9 @@ public class TicTacToeGame {
 	public  int tie = 0 ;
 	public  int changeUserTurn = 0 ;
 	public  int count = 0;
-
+	public int tossWinner = 0 ;
+	public int[] arrCorners = {1,3,7,9};
+	public int[] arrSides = { 2,4,6,8 };
 	public void createBoard() {
 
 		for (int i = 1; i <board.length ; i++) {
@@ -133,12 +135,13 @@ public class TicTacToeGame {
 		if(userChoice==headOrTail)
 		{
 			System.out.println("Player's Turn.");
-			turnToPlay='P';
+			turnWinner = 1;
 
 		}
 		else
 		{
 			System.out.println("Computer's turn");
+			tossWinner = 0;
 			turnToPlay='C';
 			indexNumber = rand.nextInt(10);
 			flag = 1;
@@ -314,8 +317,22 @@ public void computerMove()
 	else if((board[9]==' ')&&((board[1]==board[5]&&board[5]==userOption)||(board[6]==board[3]&&board[3]==userOption)||(board[8]==board[7]&&board[7]==userOption)))
 	{
 		board[9]=computerOption;
-	}			
+	}
+
+	//checking for corner values usecase10
+	
+	int flag1 = 0;
+	for(int i=0;i<4;i++)
+	{
+		if(board[arrCorners[i]]==' ')
+			{
+			board[arrCorners[i]]=computerOption;
+			flag1=1;
+			break;
+			}
+	}
 } 
+
     
 
 
